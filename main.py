@@ -83,11 +83,15 @@ frame_for_weather.pack()
 
 def get_temperature():
     global weather
+    if (weather['cod'] != 200):
+        return "Не найдено"
     temp = format(weather['main']['temp'] - 273, '.2f')
     return (lambda temp: '+' if (temp >= 0) else '-')(float(temp)) + temp
 
 def display_favicons_and_description():
     global weather
+    if (weather['cod'] != 200):
+        return
     favic = weather['weather'][0]['icon'][:-1] + 'd'
     favic = requests.get('http://openweathermap.org/img/wn/{}@2x.png'.format(favic), headers={'User-Agent': UserAgent().chrome}).content
     with open('favic.png', 'wb') as f:
