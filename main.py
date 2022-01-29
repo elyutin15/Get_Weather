@@ -35,7 +35,7 @@ weather = dict()
 def get_weather(name):
     global weather
     name = name.lower()
-    page = requests.get('http://api.openweathermap.org/data/2.5/weather?q=' + name + '&appid=d4f204ce8fd704e6a465d49949543a67&lang=ru', headers={'User-Agent': UserAgent().chrome})
+    page = requests.get('http://api.openweathermap.org/data/2.5/weather?q=' + name + '&appid=d4f204ce8fd704e6a465d49949543a67&lang=ru', headers={'User-Agent': UserAgent().random})
     weather = json.loads(page.content)
 
 def parse(text):
